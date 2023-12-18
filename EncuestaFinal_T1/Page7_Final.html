@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load i18n %}
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+    <link href="{% static 'custom.css' %}" rel="stylesheet"/>
+{% endblock %}
+{# ****************************************************************************************************************** #}
+
+
+
+{# ****************************************************************************************************************** #}
+{# *** TITLE *** #}
+{# ****************************************************************************************************************** #}
+{# *** CONTENT *** #}
+{# ****************************************************************************************************************** #}
+{% block content %}
+    <div class="wrapper instructions">
+        <div style="position: relative; margin: 10% auto; padding: 20px; width: 50%; text-align: center; background-color: white; border-radius: 15px;">
+            <h2 style="font-weight: bold;">¡Muchas gracias por participar!</h2>
+            <p>Tu respuesta ha sido registrada.</p>
+            <br>
+            <p>Por haber completado esta encuesta, has ganado el siguiente boleto de lotería:</p>
+            <!-- Contenedor de la imagen del boleto y el número -->
+            <div style="position: relative; display: inline-block;">
+                <img src="{% static 'images/Boleto_1Sorteo_22Feb.png' %}" alt="Golden Ticket" style="width: 120%; margin-top: 20px;">
+                <!-- Número del boleto posicionado sobre la imagen -->
+                <span id="numeroAleatorio" style="position: absolute; left: 60%; top: 25%; transform: translate(-50%, -50%); font-size: 2em; color: black; font-weight: bold;"></span>
+            </div>
+            <a href="{% static 'images/Boleto_1Sorteo_22Feb.png' %}" download="Boleto1Sorteo.jpg">
+                Descargar Boleto
+        </div>
+    </div>
+    </a>
+{% endblock %}

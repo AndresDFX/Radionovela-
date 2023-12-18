@@ -1,0 +1,106 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load i18n %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+<link href="{% static 'custom.css' %}" rel="stylesheet" />
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** TITLE *** #}
+{# ****************************************************************************************************************** #}
+{% block title %}
+    {% trans "Inicio" %}
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** CONTENT *** #}
+{# ****************************************************************************************************************** #}
+{% block content %}
+
+    <div class="wrapper instructions">
+        <div>
+        <p align ="center">
+            <b><em>¡Vamos a empezar!</em></b>
+            <br> A continuación, te presentaremos los capitulos de nuestra radionovela <b>"Volver a empezar"</b>
+        </p>
+        <br><b>Ten en cuenta:</b>
+        <br>
+        <br>
+        <span class="icocor3" style="font-size: 30px;">&#128266;</span>
+        <b>Capitulos y Premios</b><br>
+        Cada capítulo que escuches es tu boleto de entrada para ganar tarjetas de regalo de $500,000. 
+        <br>
+        <br>
+        <span class="icocor3" style="font-size: 30px;">&#10024;</span>
+        <b>Bonus por conocimiento</b><br>
+        Después de cada 3 capítulos, te retaremos con <b>preguntas sobre la radionovela.</b> 
+        Si respondes <b>correctamente</b>, ¡te llevas <b>boletas adicionales</b> para aumentar tus posibilidades de ganar!
+        <br>
+        <br>
+        <span class="icocor3" style="font-size: 30px;">&#128198;</span>
+        <b>Fechas importantes</b><br>
+        Marca tu calendario, porque cada jueves podrás acceder a los siguientes 3 capítulos. 
+        <br><b>¡No te pierdas ni uno!</b> 
+        <br>
+        <br>
+        <table class="horizontal-borders" border="1" align="center">
+            <tr>
+                <th style="width: 30%;">Fechas</th>
+                <th style="width: 30%;">Capitulos disponibles</th>
+                <th style="width: 30%;">Fecha de Sorteo</th>
+            </tr>
+            <tr>
+                <td>Hoy (8 de febrero) </td>
+                <td>1 al 3</td>
+                <td>22 de febrero</td>
+            </tr>
+            <tr>
+                <td>15 de febrero</td>
+                <td>4 al 6</td>
+                <td>22 de febrero</td>
+            </tr>
+            <tr>
+                <td>22 de febrero</td>
+                <td>7 al 9</td>
+                <td>22 de febrero</td>
+            </tr>
+            <tr>
+                <td>29 de febrero</td>
+                <td> 10 al 12</td>
+                <td>14 de marzo</td>
+            </tr>
+            <tr>
+                <td>7 de marzo</td>
+                <td>13 al 15</td>
+                <td>14 de marzo</td>
+            </tr>
+        </table>
+        <br>
+        <span class="icocor3" style="font-size: 30px;">&#128279;</span>
+        <b>Acceso continuo</b><br>
+        El enlace estará disponible <b>siempre</b>.
+        <br>Podrás escuchar los capitulos en los horarios que desees.
+        <br>¡Vuelve cuando quieras para escuchar los capitulos y aumentar tus chances de ganar!  
+        <br>
+        <br>
+    </div>
+    <p align = "center">
+        <br>
+        <b>¡Tu ayuda es valiosa y apreciada! 
+            <br>¡Gracias por formar parte de este proyecto!
+        </b>
+    <br>  
+    <br>Si tienes preguntas o inquietudes, no dudes en llamarnos o escribirnos al WhatsApp XXXXXXXXX 
+    <br>
+
+    {% next_button %}
+
+{% endblock %}
+  

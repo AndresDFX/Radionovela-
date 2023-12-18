@@ -1,0 +1,91 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load i18n %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+<link href="{% static 'custom.css' %}" rel="stylesheet" />
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** TITLE *** #}
+{# ****************************************************************************************************************** #}
+{% block title %}
+    {% trans "Preguntas 4" %}
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** CONTENT *** #}
+{# ****************************************************************************************************************** #}
+{% block content %}
+
+    <div class="wrapper instructions">
+        <b>1. ¿Cuál carita expresa mejor tu opinión sobre los 3 capitulos que acabas de escuchar? </b>
+        <p align = "justify" >
+            <table class="table">
+                <tr>
+                    <th></th>
+                    <th><span class="icocor1" style="font-size: 36px;">&#128545;</span></td></th>
+                    <th><span class="icocor1" style="font-size: 36px;">&#128557;</span></td></th>
+                    <th><span class="icocor1" style="font-size: 36px;">&#128580;</span></td></th>
+                    <th><span class="icocor1" style="font-size: 36px;">&#128578;</span></td></th>
+                    <th><span class="icocor1" style="font-size: 36px;">&#128513;</span></td></th>
+                </tr>
+                <tr>
+                    <td></td>
+                    {% for choice in form.P4P1_emocion_4 %}
+                        <td>{% choice %}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+        </p>
+    </div>
+
+    <div class="wrapper instructions">
+        <p align = "justify" >
+                            
+            {{ formfield 'P4P2_musica' }}
+            {{ formfield 'P4P3_papa' }}
+            {{ formfield 'P4P4_busca' }}
+        </p>
+    </div>
+
+    <div class="wrapper instructions">
+        <b>5. Del 0 al 10, ¿Qué tanto te identificas con la historia de Frankie?</b>
+        <p align = "justify" >
+            <table class="table">
+                <tr>
+                    <th> </th>
+                    <th>0</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                    <th>8</th>
+                    <th>9</th>
+                    <th>10</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    {% for choice in form.P4P5_identifica %}
+                        <td>{% choice %}</td>
+                    {% endfor %}
+                </tr>
+            </table>
+            <br>{{ formfield 'P4P6_amigos' }}
+
+        </p>
+    </div>
+
+    
+{% next_button %}
+
+{{ endblock }}

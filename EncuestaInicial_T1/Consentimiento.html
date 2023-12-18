@@ -1,0 +1,123 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+{% load i18n %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** STYLES *** #}
+{# ****************************************************************************************************************** #}
+{% block styles %}
+<link href="{% static 'custom.css' %}" rel="stylesheet" />
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** TITLE *** #}
+{# ****************************************************************************************************************** #}
+{% block title %}
+    {% trans "Consentimiento Informado" %}
+{% endblock %}
+
+
+{# ****************************************************************************************************************** #}
+{# *** CONTENT *** #}
+{# ****************************************************************************************************************** #}
+{% block content %}
+
+    <div class="wrapper instructions">
+        <p align = "justify" >
+            ¡Hola!<br><br>
+            <b>¡Gracias por venir!</b><br><br>
+
+
+            Has sido seleccionado para participar de un estudio pensado para personas como tú. 
+            <br><em>Tu opinión es clave para comprender mejor la realidad de los jóvenes venezolanos que hoy viven en Colombia. </em><br><br>
+            
+            <span class="icocor1" style="font-size: 36px;">&#128198;</span>
+            <b>¡Duración</b><br>
+            
+            <ul>
+                <li><b>Tarea 1: HOY</b> empezaremos con una encuesta corta que sólo te tomará unos minutos. 
+                    Por apoyarnos, recibirás una boleta para el primer sorteo.<br></li>
+                    <br>
+                <li><b>Tarea 2: El 8 de FEBRERO</b> te enviaremos los primeros 3 capitulos de nuestra radionovela <b>"Volver a comenzar"</b> y algunas preguntas. 
+                    Por participar recibirás una boleta por cada capitulo escuchado y boletos adicionales por respuesta correcta para participar del segundo sorteo.<br></li>
+                    <br>
+                <li><b>Tarea 3: El 15 de FEBRERO</b> te enviaremos los  capitulos del 4 al 6 de nuestra radionovela <b>"Volver a comenzar"</b> y algunas preguntas. 
+                    Por participar recibirás una boleta por cada capitulo escuchado y boletos adicionales por respuesta correcta para participar del segundo sorteo.<br></li>
+                    <br>
+                <li><b>Tarea 4: El 22 de FEBRERO</b> te enviaremos los capitulos del 7 al 9 de nuestra radionovela <b>"Volver a comenzar"</b> y algunas preguntas. 
+                    Por participar recibirás una boleta por cada capitulo escuchado y boletos adicionales por respuesta correcta para participar del segundo sorteo.<br></li>
+                    <br>
+                <li><b>Tarea 5: El 29 de FEBRERO</b> te enviaremos los capitulos del 10 al 12 de nuestra radionovela <b>"Volver a comenzar"</b> y algunas preguntas. 
+                    Por participar recibirás una boleta por cada capitulo escuchado y boletos adicionales por respuesta correcta para participar del tercer sorteo.<br></li>
+                    <br>
+                <li><b>Tarea 6: El 7 de MARZO</b> te enviaremos los capitulos del 13 al 15 de nuestra radionovela <b>"Volver a comenzar"</b>, algunas preguntas y una encuesta. 
+                    Por participar recibirás una boleta por cada capitulo escuchado y un boleto adicional por completar la encuesta para participar del tercer sorteo.<br></li>
+                    <br>
+                <li><b>Tarea 7: El 8 DE ABRIL</b> recibirás tu última tarea. 
+                Será una brevísima encuesta que también entregará boletas para participar del último sorteo </li>
+        </ul>
+            <span class="icocor3" style="font-size: 40px;">&#128184;</span>
+            <b>Sorteos</b><br>
+            Entregaremos dos tarjetas de regalo por <b>$500,000</b> en cada sorteo. 
+            Deberás haber terminado tu tarea antes de las 6:00 p.m. del día del sorteo para poder participar.  <br>
+            Los sorteos se realizarán virtualmente y recibirás invitación para asistir a ellos.
+            <br><b>Este es el calendario de premiaciones: </b>
+            <br>
+            <br>
+            <table class="horizontal-borders" border="1" align="center">
+                <tr>
+                    <th style="width: 55%;">Número de Sorteo </th>
+                    <th style="width: 55%;">Fecha de Sorteo</th>
+                </tr>
+                <tr>
+                    <td>Primer sorteo </td>
+                    <td>8 de febrero del 2024</td>
+                </tr>
+                <tr>
+                    <td>Segundo sorteo</td>
+                    <td>22 de febrero del 2024</td>
+                </tr>
+                <tr>
+                    <td>Tercer sorteo</td>
+                    <td>14 de marzo del 2024</td>
+                </tr>
+                <tr>
+                    <td>Cuarto sorteo</td>
+                    <td>19 de abril del 2024</td>
+                </tr>
+            </table>
+            <span class="icocor2" style="font-size: 40px;">&#129351;</span>              
+            <b>Entrega del premio</b>
+            <br>Los ganadores de cada sorteo recibirán la tarjeta de regalo  
+            <br>En entrega del premio se realizará dentro de los primeros 5 días hábiles
+            <br>
+            <span class="icocor4" style="font-size: 40px;">&#128274;</span>
+            <b>Protegemos tu información:</b>
+            <br>Tu participación es <b>voluntaria y anónima</b>. 
+                Las encuestas no recogen datos personales y puedes retirarte en cualquier momento. 
+                Además, protegeremos tus respuestas de acuerdo con la Ley Estatutaria 1581 de 2012 de Protección de Datos. 
+            <br>
+            <br>
+            <span class="icocor5" style="font-size: 36px;">&#129300;</span>
+            <b>No dudes en preguntar:</b>
+            <br>Tu participación es <b>voluntaria y anónima</b>. 
+            Si tienes preguntas o quieres conocer los resultados del proyecto, puede escribirnos al correo electrónico: 
+            <a href="mailto:daniela.pedroza@correounivalle.edu.co">xxxx@hotmail.com</a> 
+            o llamarnos al XXXXX
+            <br>                  
+            <br>
+        </p>
+              
+        <p align = "center" >¿Deseas continuar?
+            <div class="button-container" style="text-align: center;">
+                <button name="accepts_terms" value="True">Sí</button>
+                <button type="button" name="accepts_terms" onclick="location.href='https://google.com';" value="False">No</button>
+            </div>
+        </p>
+  
+    </div>
+  
+  {% endblock %}
+  
