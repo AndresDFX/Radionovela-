@@ -102,7 +102,7 @@ class Player(BasePlayer):
     ES_F25_ven_ladrones = models.IntegerField(widget=widgets.RadioSelect, choices=[0,1,2,3,4,5,6,7,8,9,10])
 
     ES_F26_campaña = models.StringField(
-        label="24. ¿Participarías en una campaña para conseguir 1,000 empleos para jóvenes venezolanos en Colombia",
+        label="15. ¿Participarías en una campaña para conseguir 1,000 empleos para jóvenes venezolanos en Colombia",
         choices=[ 
             [0,"a. No, no me interesa."],
             [1,"b. No, no quiero."],
