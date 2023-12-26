@@ -3,7 +3,9 @@
 <div id="pageContent">
     <div class="wrapper instructions" style="text-align: center;">
         <h1>Felicidades!</h1>
-        <p>¡Ya tienes {{ numeros_aleatorios|length }} boleta para participar en el primer sorteo del 8 de Febrero!</p>
+        <p>Por las preguntas contestadas has obtenido los siguientes boletos adicionales</p>
+        <p>### (boletos adionales)</p>
+        <p>¡En total, Ya tienes {{ numeros_aleatorios|length }} boleta para participar en el segundo sorteo del 14 de Marzo!</p>
         <p>Los números de boletas que has obtenido son los siguientes:</p>
         <ul id="listaNumerosAleatorios" style="list-style: none;">
             {% for numero in numeros_aleatorios %}
@@ -22,16 +24,8 @@
         
         <button id="downloadBtn">Descargar</button>
     </div>
+    {% next_button %}
 </div>
-
-
-
-
-
-
-
-
-
 
 
 

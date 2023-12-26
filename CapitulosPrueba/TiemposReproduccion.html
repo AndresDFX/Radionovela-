@@ -2,7 +2,11 @@
 {% load static otree %}
 
 {% block title %}
-    Capítulo {{ num_pagina }}: "{{ nombre_actual }}"
+    {% if mostrar_capitulos %}
+        Capítulo {{ num_pagina }}: "{{ nombre_actual }}"
+    {% else %}
+        No hay capitulo
+    {% endif %}
 {% endblock %}
 
 {% block styles %}
@@ -11,6 +15,7 @@
 
 {% block content %}
     <div class="wrapper instructions">
+        {% if mostrar_capitulos %}
             <p align="justify">
                 <b>¡Hola!</b>
                 <br>
@@ -24,7 +29,7 @@
                 </audio>
                 <br>
             <p align="justify">
-                Sólo por escuchar el audio completo ya tendrás una <b>boleta</b> para el primer <b> sorteo del 8 de febrero</b>. 
+                Sólo por escuchar el audio completo ya tendrás una <b>boleta</b> para el primer <b> sorteo del 8 de febrero</b>.
                 <br>Pero eso no es todo, por cada pregunta que respondas bien, te daremos una boleta adicional.
                 <br>
                 <br>
@@ -46,7 +51,7 @@
             </ul>
             {% endif %}
             <p align="center">
-                <br>Oprime el botón "siguiente" para continuar con los siguientes capítulos y las preguntas, 
+                <br>Oprime el botón "siguiente" para continuar con los siguientes capítulos y las preguntas,
                 <br>Sólo te tomará unos minutos.
             </p>
     </div>
@@ -57,24 +62,21 @@
     </div>
 
 
+    {% else %}
+
+        <p>Los siguientes capítulos estarán disponibles el próximo jueves. ¡Vuelve entonces para seguir disfrutando de la radionovela!</p>
+    {% endif %}
+
 
     <div id="modalNumeroAleatorio" style="display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1000;">
         <div style="position: relative; margin: 10% auto; padding: 20px; width: 50%; text-align: center; background-color: white; border-radius: 15px;">
             <h2 style="font-weight: bold;">¡Muchas gracias por escucharnos!</h2>
             <p>Por escuchar este capítulo, has ganado el siguiente boleto de lotería:</p>
-            <!-- Contenedor de la imagen del boleto y el número -->
             <div style="position: relative; display: inline-block;">
-                <img src="{% static 'images/Boleto_1Sorteo_22Feb.png' %}" alt="Golden Ticket" style="width: 100%; margin-top: 20px;">
-                <!-- Número del boleto posicionado sobre la imagen -->
-                <span id="numeroAleatorio" style="position: absolute; left: 75%; top: 18%; transform: translate(-50%, -50%); font-size: 2em; color: rgb(247, 244, 244); font-weight: bold;"></span> 
+                <img id="ticketImage" src="{% static 'images/Boleto_1Sorteo_22Feb.png' %}" alt="Golden Ticket" style="width: 100%; margin-top: 20px;">
+                <span id="numeroAleatorio" style="position: absolute; left: 75%; top: 18%; transform: translate(-50%, -50%); font-size: 2em; color: white;"></span>
             </div>
-            <div>
-                <a id="enlaceDescarga" href="#" download="Boleto_Numero_Aleatorio.jpg">
-                    <br>Descargar Boleta
-                </a>
-                <br>
-            </div>
-            <!-- Botón Aceptar centrado debajo de la imagen -->
+            <a href="#" id="downloadBtn" style="margin-top: 20px;">Descargar Boleta</a>
             <button id="botonAceptarModal" onclick="manejarAceptar()" style="margin-top: 20px; display: inline-block; width: auto; padding: 10px 20px; font-size: 1em;">Aceptar</button>
         </div>
     </div>
@@ -129,12 +131,40 @@
 
     function mostrarModal(numero) {
         document.getElementById('numeroAleatorio').textContent = numero;
-        var enlaceDescarga = document.getElementById('enlaceDescarga');
-        enlaceDescarga.href = "{% static 'images/Boleto_1Sorteo_22Feb.png' %}"; // Cambia la URL de la imagen si es diferente
         document.getElementById('modalNumeroAleatorio').style.display = 'block';
         modalAbierto = true;
         localStorage.setItem('modalAbierto_' + identificadorUnico, 'true');
+        prepararEnlaceDescarga(numero);
     }
+
+    function prepararEnlaceDescarga(numeroAleatorio) {
+        var enlaceDescarga = document.getElementById('enlaceDescarga');
+        enlaceDescarga.addEventListener('click', function(event) {
+            event.preventDefault();
+            descargarImagen(numeroAleatorio);
+        });
+    }
+
+    function descargarImagen(numeroAleatorio) {
+        var ticketImage = document.getElementById('ticketImageModal'); // Asegúrate de que este ID corresponda al de tu imagen en el modal
+        var canvas = document.createElement('canvas');
+        canvas.width = ticketImage.naturalWidth;
+        canvas.height = ticketImage.naturalHeight;
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage(ticketImage, 0, 0);
+        ctx.font = '200px Arial';
+        ctx.fillStyle = 'white';
+        ctx.fillText(numeroAleatorio, canvas.width * 0.70, canvas.height * 0.17);
+
+        var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        var link = document.createElement('a');
+        link.href = image;
+        link.download = 'BoletoSorteo_' + numeroAleatorio + '.png';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
 
     function cerrarModal() {
         document.getElementById('modalNumeroAleatorio').style.display = 'none';
@@ -189,6 +219,7 @@
             });
         }
 
+        // Abrir el modal si ya se había mostrado antes
         if (localStorage.getItem('modalAbierto_' + identificadorUnico) === 'true') {
             var numeroAleatorioGuardado = localStorage.getItem('numeroAleatorio_' + identificadorUnico);
             if (numeroAleatorioGuardado) {
@@ -198,5 +229,6 @@
     };
 </script>
 {% endblock %}
+
 
 

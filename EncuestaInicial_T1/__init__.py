@@ -1,3 +1,5 @@
+from random import randint
+
 from otree.api import *
 
 
@@ -49,7 +51,7 @@ class Player(BasePlayer):
             [4,"d. Básica Secundaria (9° grado)"],
             [5,"e. Media /Bachillerato (11° grado)"],
             [6,"f. Superior o Universitaria"],
-            [7,"f. No sabe, no informa"],
+            [7,"g. No sabe, no informa"],
         ],
         widget = widgets.RadioSelect
     )
@@ -80,8 +82,8 @@ class Player(BasePlayer):
             [3,"c. Trabaja y Estudia"],
             [4,"d. Buscando empleo"],
             [5,"e. Estudia y busca empleo"],
-            [5,"e. Ninguna de las anteriores"],
-            [5,"e. Otro"],
+            [6,"f. Ninguna de las anteriores"],
+            [7,"g. Otro"],
         ],
         widget = widgets.RadioSelect
     )
@@ -104,8 +106,8 @@ class Player(BasePlayer):
             [3,"c. Federico Gutiérrez"],
             [4,"d. Sergio Fajardo"],
             [5,"e. John Milton Rodríguez"],
-            [6,"e. Enrique Goméz"],
-            [7,"e. Prefiero no decirlo / A nadie"],
+            [6,"f. Enrique Goméz"],
+            [7,"g. Prefiero no decirlo / A nadie"],
         ],
         widget = widgets.RadioSelect
     )
@@ -201,7 +203,7 @@ class Player(BasePlayer):
         widget = widgets.RadioSelect
     )
 
-    cuantos2 = models.IntegerField(label="¿Cuantos amigos cercanos tienes que hayan nacido en Venezuela?", initial="0")
+    cuantos2 = models.IntegerField(label="¿Cuantos amigos cercanos tienes que hayan nacido en Venezuela?", initial=0)
 
     F10_vecinos_españoles = models.IntegerField(widget=widgets.RadioSelect, choices=[0,1,2,3,4,5,6,7,8,9,10])
     F11_vecinos_venezolanos = models.IntegerField(widget=widgets.RadioSelect, choices=[0,1,2,3,4,5,6,7,8,9,10])
@@ -285,6 +287,33 @@ class Page6_ParteF(Page):
 class Page7_Final(Page):
     form_model = 'player'
 
+    def vars_for_template(self):
+
+        # Inicializa la lista si no existe
+        if 'numeros_usados' not in self.session.vars:
+            self.session.vars['numeros_usados'] = []
+
+        numero_aleatorio = randint(1, Constants.max_number_random)
+        while numero_aleatorio in self.session.vars['numeros_usados']:
+            numero_aleatorio = randint(1, Constants.max_number_random)
+
+        self.session.vars['numeros_usados'].append(numero_aleatorio)
+        self.numero_aleatorio = numero_aleatorio
+
+        return {
+            'numero_aleatorio': numero_aleatorio
+        }
+
+
+class PaginaFinal(Page):
+    def vars_for_template(self):
+        numeros_aleatorios = [p.numero_aleatorio for p in self.player.in_all_rounds() if p.numero_aleatorio is not None]
+        return {
+            'numeros_aleatorios': numeros_aleatorios,
+            'num_pagina': self.round_number
+        }
+
+
 
 class Final(Page):
     form_model = 'player'
@@ -305,6 +334,7 @@ class Final(Page):
         return {
             'numeros_aleatorios': numeros_aleatorios,
         }
+
 
 
 

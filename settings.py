@@ -20,12 +20,6 @@ SESSION_CONFIGS = [
     ),
 
     dict(
-         name='Capitulos',
-         app_sequence=['Capitulos'],
-         num_demo_participants=20,
-    ),
-
-    dict(
          name='EncuestaFinal_T1',
          app_sequence=['EncuestaFinal_T1'],
          num_demo_participants=20,

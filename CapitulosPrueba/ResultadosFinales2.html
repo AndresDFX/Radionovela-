@@ -1,0 +1,36 @@
+{% block content %}
+
+<div id="pageContent">
+    <div class="wrapper instructions" style="text-align: center;">
+        <h1>Felicidades!</h1>
+        <p>Has escuchado todos los capitulos de la Radionovela</p>
+        <p>Cuentanos que te parecio</p>
+        <p>Por las preguntas contestadas has obtenido los siguientes boletos adicionales</p>
+        <p>### (boletos adionales)</p>
+        <p>¡En total, Ya tienes {{ numeros_aleatorios|length }} boleta para participar en el Segundo sorteo del 14 de marzo!</p>
+        <p>Los números de boletas que has obtenido son los siguientes:</p>
+        <ul id="listaNumerosAleatorios" style="list-style: none;">
+            {% for numero in numeros_aleatorios %}
+            <li>{{ numero }}</li>
+            {% endfor %}
+        </ul>
+        <img src="{% static 'images/Boleto_estatico.png' %}" alt="Golden Ticket"  style="width: 100%; margin-top: 20px;">
+        <br>
+        <p>Recuerda conectarte el día del sorteo al live de instagram y facebook a las 7pm en las cuentas de facebook e instagram de @radionovela123        
+        </p>
+        <br>
+        <p>Ten encuenta que aun tienes que completar una tienes dos actividades mas que puedes completar para ganar mas sorteos.       
+        </p>
+
+        <p>¡Mucha suerte!</p>
+        
+        <button id="downloadBtn">Descargar</button>
+    </div>
+    {% next_button %}
+</div>
+
+
+
+
+
+{% endblock %}
